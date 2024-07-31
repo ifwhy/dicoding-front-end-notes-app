@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes App | Ivan Wahyu Nugroho</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,6]00;1,700;1,800;1,900&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+
+  <!-- Web Icon -->
+  <link rel="icon" href="./img/logo-ivan.jpg">
+
+  <!-- TailwindCSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- MyCSS -->
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+  <div class="w-full font-ubuntu" id="main-grid">
+    <!-- Header Start -->
+    <header 
+      class="w-full h-max
+            flex justify-center md:justify-start items-center md:pl-20 py-2 bg-dark md:sticky md:top-0 md:mb-0 z-50">
+      <logo-title src="./img/logo-4.png" alt="Logo Notes App - Dicoding"></logo-title>
+    </header>
+    <!-- Header Stop -->
+
+    <!-- Main Start -->
+    <main class="w-full h-full flex flex-col justify-center items-center min-w-[30%] mt-0 md:mt-7">
+      <section class="w-[80%] sm:w-[70%] md:w-[60%]
+      lg:w-[45%] bg-light p-5 rounded-md">
+        <p class="font-bold text-xl">Tambahkan Catatan</p>
+
+        <form class="mt-2">
+          <div class="flex flex-col">
+            <input type="text"
+                   class="hidden" 
+                   id="noteId" 
+                   name="noteId"
+                   >
+            <div class="flex justify-between">
+              <label for="judul" class="text-sm font-thin">Judul Catatan</label> 
+              <p class="text-[13px] mr-1" id="sisa-karakter"></p>
+            </div>
+            <input type="text" 
+                   id="judul" 
+                   name="judul"
+                   class="border border-dark w-full pl-3 py-2 
+                          mt-1 text-sm mb-2 rounded-md focus:ring-2 focus:outline-none focus:border-none focus:ring-dark"
+                   required
+                   title="Tambahkan Judul Catatan"
+                   minlength="6"
+                   maxlength="50"
+                   placeholder="Masukkan Judul Catatan"
+                   aria-describedby="judul-catatan"
+                   >
+          </div>
+          <p id="judul-catatan"
+             aria-live="polite"
+             class="text-red-500 text-[12.5px] font-thin hidden">Judul Wajib Diisi!</p>
+          
+          <div class="flex flex-col">
+            <div class="flex justify-between">
+              <label for="isi-catatan" class="text-sm font-thin">Isi Catatan</label> <br>
+              <p class="text-[13px] mr-1" id="sisa-karakter-isi"></p>
+            </div>
+            <textarea name="isi_catatan"
+                      id="isi-catatan" 
+                      class="border border-dark w-full h-20 pl-2 py-2 mt-1 text-sm rounded-md 
+                      focus:ring-2 focus:outline-none focus:border-none focus:ring-dark"
+                      placeholder="Masukkan Isi Catatan"
+                      minlength="10"
+                      required
+                      title="Tambahkan Isi Catatan"
+                      aria-describedby="konten-catatan"
+                      ></textarea>
+          </div>
+          <p id="konten-catatan"
+            aria-live="polite"
+            class="text-red-500 text-[12.5px] mt-2 font-thin hidden"
+          >Isi catatan tidak boleh kosong!</p>
+          
+          <input type="datetime-local"
+                 hidden 
+                 value="datetime-local"
+                 id="date-time"
+                 name="date-time"
+                 >
+          
+          <button type="submit"
+                  class=" w-full py-2 rounded-lg border-2 border-light bg-semilight text-sm 
+                  lg:text-base my-4 font-bold hover:border-black hover:bg-light 
+                  hover:text-black focus:bg-semidark focus:text-white focus:border-light" 
+                  title="Klik untuk Menambahkan Catatan"       
+          >
+
+          <div class="flex justify-center gap-2 items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-notebook-pen"><path d="M13.4 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7.4"/><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><path d="M21.378 5.626a1 1 0 1 0-3.004-3.004l-5.01 5.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/></svg>
+            <p>Tambah Catatan</p>
+          </div>
+          </button>
+        </form>
+      </section>
+
+      <section class="mt-10 w-[90%] border-2 border-semidark">
+        <p class="text-center text-xl font-semibold bg-semidark text-white py-1">Catatan Aktif</p>
+
+        <div class="note-grid px-2 md:gap-3" id="card-aktif">
+          
+        </div>
+      </section>
+
+      <section class="mt-10 w-[90%] border-2 border-semidark">
+        <p class="text-center text-xl font-semibold bg-semidark text-white py-1">Catatan Arsip</p>
+
+        <div class="note-grid md:gap-3 px-2" id="card-arsip">
+          
+        </div>
+
+      </section>
+
+    </main>
+    <!-- Main Stop -->
+
+    <!-- Footer Start -->
+    <footer class="w-full mt-16 text-center py-3 
+                  font-bold flex flex-col
+                  text-sm sm:text-md md:text-xl mb-5">
+      <name-thanks nama="Ivan Wahyu Nugroho">
+        Thank You Dicoding ❤️
+      </name-thanks>
+    </footer>
+    <!-- Footer Stop -->
+  </div>
+
+  <!-- Script for TailwindCSS -->
+  <script src="./js/tailwind.js"></script>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <!-- MyScript -->
+   <script src="./js/validasi.js"></script>
+   <script src="./js/utils.js"></script>
+   <script src="./js/customElements.js"></script>
+</body>
+</html>

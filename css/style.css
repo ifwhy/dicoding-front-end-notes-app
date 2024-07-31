@@ -1,0 +1,12 @@
+#main-grid {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(auto-fill, minmax(3%, 1fr));
+}
+
+.note-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 0.25rem;
+    justify-items: center;
+}
