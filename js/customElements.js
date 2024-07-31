@@ -7,7 +7,7 @@ class NotesCard extends HTMLElement {
   
   connectedCallback() {
     this.innerHTML = `
-      <div class="card flex flex-col justify-content items-center my-5 p-4 rounded-md" style="width:max-width; min-width:250px; max-width: 325px; background-color: #DDE6ED; min-height:200px; position:relative;" id="card">
+      <div class="card flex flex-col justify-content items-center my-5 p-4 rounded-md" style="width:265px; max-width:325px; background-color: #DDE6ED; min-height:200px; position:relative;" id="card">
         <p class="text-base text-center font-semibold" id="card-title"></p>
         <p class="text-left mt-2" id="card-date-time" style="font-size:12px;"></p>
         <p class="text-sm text-justify mt-1" id="card-body">
